@@ -1,0 +1,25 @@
+version: '3.3'
+
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3310:3306"
+    expose:
+      - '3310'
+    environment:
+      MYSQL_ROOT_PASSWORD: 'pavel'
+      MYSQL_DATABASE: 'trips'
+      MYSQL_USER: 'trips'
+      MYSQL_PASSWORD: 'trips'
+    networks:
+      - app-network
+
+volumes:
+  db_data: {}
+
+networks:
+  app-network:
+    driver: bridge
